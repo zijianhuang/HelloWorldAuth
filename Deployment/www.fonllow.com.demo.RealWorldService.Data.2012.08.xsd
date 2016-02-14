@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.fonllow.com/demo/RealWorldService/Data/2012/08" elementFormDefault="qualified" targetNamespace="http://www.fonllow.com/demo/RealWorldService/Data/2012/08" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Evil666Error">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Evil666Error" nillable="true" type="tns:Evil666Error" />
+  <xs:complexType name="CompositeType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BoolValue" type="xs:boolean" />
+      <xs:element minOccurs="0" name="StringValue" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CompositeType" nillable="true" type="tns:CompositeType" />
+</xs:schema>
