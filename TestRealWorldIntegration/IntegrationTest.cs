@@ -14,7 +14,7 @@ namespace TestRealWorldIntegration
     /// Summary description for Integration
     /// </summary>
     [Collection(TestConstants.IisExpressAndInit)]
-    public class IntegrationTest 
+    public class IntegrationTest
     {
         const string realWorldEndpoint = "DefaultBinding_RealWorld";
 
@@ -89,6 +89,30 @@ namespace TestRealWorldIntegration
                 {
                     Assert.True(true, "Very good, excepted.");
                 }
+            }
+
+        }
+
+        [Fact]
+        public void TestGetDataUsingDataContractThrowsMessageSecurityException()
+        {
+            using (RealWorldProxy client = new RealWorldProxy(realWorldEndpoint))
+            {
+                client.Instance.ClientCredentials.UserName.UserName = "test";
+                client.Instance.ClientCredentials.UserName.Password = "wrongpwd";
+
+                    CompositeType data = new CompositeType()
+                    {
+                        BoolValue = true,
+                        StringValue = "Good",
+                    };
+
+                var ex = Assert.Throws<System.ServiceModel.Security.MessageSecurityException>(() =>
+                {
+                    CompositeType result = client.Instance.GetDataUsingDataContract(data);
+                });
+
+                Assert.True(ex.InnerException is System.ServiceModel.FaultException);
             }
 
         }
