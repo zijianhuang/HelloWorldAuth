@@ -96,6 +96,30 @@ namespace TestRealWorldIntegration
 
         }
 
+        [Fact]
+        public void TestGetDataUsingDataContractThrowsMessageSecurityException()
+        {
+            using (RealWorldProxy client = new RealWorldProxy(realWorldEndpoint))
+            {
+                client.Instance.ClientCredentials.UserName.UserName = "test";
+                client.Instance.ClientCredentials.UserName.Password = "wrongpwd";
+
+                    CompositeType data = new CompositeType()
+                    {
+                        BoolValue = true,
+                        StringValue = "Good",
+                    };
+
+                var ex = Assert.Throws<System.ServiceModel.Security.MessageSecurityException>(() =>
+                {
+                    CompositeType result = client.Instance.GetDataUsingDataContract(data);
+                });
+
+                Assert.True(ex.InnerException is System.ServiceModel.FaultException);
+            }
+
+        }
+
     }
 
 
