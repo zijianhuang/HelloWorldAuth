@@ -5,6 +5,7 @@ using System.Security.Permissions;
 
 namespace Fonlow.Demo.RealWorldService
 {
+    [ErrorHandlerBehaviorAttribute]
     public class Service1 : IService1 
     {
         public string GetData(int value)

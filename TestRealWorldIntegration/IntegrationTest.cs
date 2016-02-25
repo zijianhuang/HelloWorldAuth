@@ -14,7 +14,7 @@ namespace TestRealWorldIntegration
     /// Summary description for Integration
     /// </summary>
     [Collection(TestConstants.IisExpressAndInit)]
-    public class IntegrationTest 
+    public class IntegrationTest
     {
         const string realWorldEndpoint = "DefaultBinding_RealWorld";
 
@@ -28,21 +28,24 @@ namespace TestRealWorldIntegration
                 Assert.True(client.Instance.GetData(1234).Contains("1234"));
             }
 
+        }
+
+        [Fact]
+        public void TestGetData666ExpectedError()
+        {
+
             using (RealWorldProxy client = new RealWorldProxy(realWorldEndpoint))
             {
                 client.Instance.ClientCredentials.UserName.UserName = "test";
                 client.Instance.ClientCredentials.UserName.Password = "tttttttt";
-                try
+                var ex = Assert.Throws<FaultException<Evil666Error>>(() =>
                 {
                     Assert.True(client.Instance.GetData(666).Contains("1234"));
                     Assert.True(false, "Expect fault");
-                }
-                catch (FaultException<Evil666Error> e)
-                {
-                    Assert.True(e.Detail.Message.Contains("666"));
-                }
+                });
+                ex.Detail.Message.Contains("666");
             }
-
+            //ErrorHandlerBehaviorAttribute in the service side also catch the exception.
         }
 
         [Fact]
