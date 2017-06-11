@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RealWorldServices", "RealWorldServices", "{7BE176F0-260E-4FDD-A244-A10D8566AD33}"
 EndProject
@@ -9,14 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{6028F4F8-3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B4D3F5C1-BD07-47FB-A1E4-D1E38610A6EA}"
 	ProjectSection(SolutionItems) = preProject
-		HelloWorld.vsmdi = HelloWorld.vsmdi
-		Local.testsettings = Local.testsettings
-		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+		StartTraceHubSlim.ps1 = StartTraceHubSlim.ps1
+		StartWcfService1.ps1 = StartWcfService1.ps1
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealWorldImp", "RealWorldImp\RealWorldImp.csproj", "{59F99C94-896C-42A1-A5D1-5C1D2925D955}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestRealWorld", "TestRealWorld\TestRealWorld.csproj", "{59634FC0-4EBE-4760-8E69-5A4B2B380A84}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealWorldServiceClientApi", "RealServiceClientApi\RealWorldServiceClientApi.csproj", "{8825689C-8CD4-4B8A-94F4-2F688C4D1EC7}"
 EndProject
@@ -28,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfService1", "WcfService1\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoClient", "DemoClient\DemoClient.csproj", "{0CFF110A-9E96-4C3B-943D-9E5822AFB2F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraceHubSlimDemo", "TraceHubSlimDemo\TraceHubSlimDemo.csproj", "{269AEBC5-F80D-4774-97AE-5D5B92CA59DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,10 +37,6 @@ Global
 		{59F99C94-896C-42A1-A5D1-5C1D2925D955}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59F99C94-896C-42A1-A5D1-5C1D2925D955}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59F99C94-896C-42A1-A5D1-5C1D2925D955}.Release|Any CPU.Build.0 = Release|Any CPU
-		{59634FC0-4EBE-4760-8E69-5A4B2B380A84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{59634FC0-4EBE-4760-8E69-5A4B2B380A84}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{59634FC0-4EBE-4760-8E69-5A4B2B380A84}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{59634FC0-4EBE-4760-8E69-5A4B2B380A84}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8825689C-8CD4-4B8A-94F4-2F688C4D1EC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8825689C-8CD4-4B8A-94F4-2F688C4D1EC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8825689C-8CD4-4B8A-94F4-2F688C4D1EC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -62,13 +57,16 @@ Global
 		{0CFF110A-9E96-4C3B-943D-9E5822AFB2F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CFF110A-9E96-4C3B-943D-9E5822AFB2F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CFF110A-9E96-4C3B-943D-9E5822AFB2F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{269AEBC5-F80D-4774-97AE-5D5B92CA59DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{269AEBC5-F80D-4774-97AE-5D5B92CA59DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{269AEBC5-F80D-4774-97AE-5D5B92CA59DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{269AEBC5-F80D-4774-97AE-5D5B92CA59DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{59F99C94-896C-42A1-A5D1-5C1D2925D955} = {7BE176F0-260E-4FDD-A244-A10D8566AD33}
-		{59634FC0-4EBE-4760-8E69-5A4B2B380A84} = {6028F4F8-3658-4937-9C82-DEBFD3D8D8AB}
 		{8825689C-8CD4-4B8A-94F4-2F688C4D1EC7} = {7BE176F0-260E-4FDD-A244-A10D8566AD33}
 		{C4377164-A78C-4410-837B-4AE3AACD857D} = {7BE176F0-260E-4FDD-A244-A10D8566AD33}
 		{D727AB2A-C54F-42AE-9BBB-2657671C485E} = {6028F4F8-3658-4937-9C82-DEBFD3D8D8AB}
