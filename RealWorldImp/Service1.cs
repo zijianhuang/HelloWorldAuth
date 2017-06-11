@@ -10,7 +10,7 @@ namespace Fonlow.Demo.RealWorldService
     {
         public string GetData(int value)
         {
-            System.Diagnostics.Debug.WriteLine("GetDataCalled");
+            System.Diagnostics.Trace.WriteLine("GetDataCalled");
             if (value == 666)
                 throw new FaultException<Evil666Error>(new Evil666Error() { Message = "Hey, this is 666." });
 
